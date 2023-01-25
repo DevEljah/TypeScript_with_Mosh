@@ -29,4 +29,16 @@ level = "a"; // don't use is like this! */
 //////////////////////////////////////////////////////
 /////////////////////      Arrays      ///////////////
 //////////////////////////////////////////////////////
+// let numbers = [1, 2, "3"]; //js
+// let numbers: number [] = [1, 2, "3"]; //TS error at compile time!
+// let numbers = [1, 2, "3"]; //js
+// let numbers: number[] = [1, 2, 3]; //TS error fix!
+// but in this part of code it isnt needed to annotate it "number[]"
+// bc every array items is number! so .. ==>
+// let numbers = [1, 2, 3]; //TS no annotatation!
+// but if arry is emtpy;
+// let numbers = []; //TS its items is set to "any" wich should be avoided!
 
+//////////////////////////////////////////////////////
+/////////////////////      Tuples      ///////////////
+//////////////////////////////////////////////////////
