@@ -7,10 +7,10 @@ console.log(age);
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
-let sales = 123_456_789; // <== let sales: number = 123_456_789;
+/* let sales = 123_456_789; // <== let sales: number = 123_456_789;
 let course = "TypeScript"; // <== let course: string = "TypeScript";
 let is_puplished = true; // <== let is_puplished: boolean = true;
-let level; // TS assumes it is type is "any"
+let level; // TS assumes it is type is "any" */
 // ==>
 /* level = 1;
 level = "a"; // don't use is like this! */
@@ -30,7 +30,7 @@ level = "a"; // don't use is like this! */
 /////////////////////      Arrays      ///////////////
 //////////////////////////////////////////////////////
 // let numbers = [1, 2, "3"]; //js
-// let numbers: number [] = [1, 2, "3"]; //TS error at compile time!
+// let numbers: number [] = [1, 2, "3"]; //TS error at compile-time!
 // let numbers = [1, 2, "3"]; //js
 // let numbers: number[] = [1, 2, 3]; //TS error fix!
 // but in this part of code it isnt needed to annotate it "number[]"
@@ -41,4 +41,17 @@ level = "a"; // don't use is like this! */
 
 //////////////////////////////////////////////////////
 /////////////////////      Tuples      ///////////////
+//////////////////////////////////////////////////////
+// is kinda of array where eeach elments has its particular type!
+// its ofen useble when working with a pair of values
+// e.g; ==> for each users // id : 1 / name: Dev
+// let user: [number, string] = [1, "Dev"]; // if 3 elements added => error!
+// but;
+// let user: [number, string, boolean] = [1, "Dev", true];
+let user: [number, string] = [1, "Dev"];
+// user[1]. or user[0]. // get code completion access TS benefits
+// if Tuples compiled the results would be a regular js array // tsc!
+
+//////////////////////////////////////////////////////
+/////////////////////      Enums      ////////////////
 //////////////////////////////////////////////////////
