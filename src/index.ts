@@ -48,10 +48,48 @@ level = "a"; // don't use is like this! */
 // let user: [number, string] = [1, "Dev"]; // if 3 elements added => error!
 // but;
 // let user: [number, string, boolean] = [1, "Dev", true];
-let user: [number, string] = [1, "Dev"];
+// let user: [number, string] = [1, "Dev"];
 // user[1]. or user[0]. // get code completion access TS benefits
 // if Tuples compiled the results would be a regular js array // tsc!
 
 //////////////////////////////////////////////////////
 /////////////////////      Enums      ////////////////
+//////////////////////////////////////////////////////
+
+/* const small = 1;
+const medium = 2;
+const big = 3; ////// one way,
+// another way; */
+
+/* //PascalCase!
+enum Size {
+  Small = 0,
+  Medium,
+  Large,
+} */ // by default they have set values! // but is changeble also to strings!
+/* enum Size {
+  Small = "s",
+  Medium = "m",
+  Large = "l",
+} */
+////
+/* enum Size {
+  Small = 1,
+  Medium,
+  Large,
+}
+let mySize: Size = Size.Medium;
+console.log(mySize); */
+//// terminal ==> tsc ==> node dist/indexjs
+//// a trick! if "const" then the tsc compiled code be different ;
+/* const enum Size {
+  Small = 1,
+  Medium,
+  Large,
+}
+let mySize: Size = Size.Medium;
+console.log(mySize); */
+
+//////////////////////////////////////////////////////
+/////////////////////    Functions    ////////////////
 //////////////////////////////////////////////////////
