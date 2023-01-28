@@ -93,3 +93,86 @@ console.log(mySize); */
 //////////////////////////////////////////////////////
 /////////////////////    Functions    ////////////////
 //////////////////////////////////////////////////////
+
+/* function calculateTax (income: number) {
+//////////////////////////////////////////////////////
+} */ // at this if mouse over to the function the type of return value is "void"
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number) {
+  return 0;
+} */ //now the function returns a type of value "number"(the type of return value)
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  // number or "void or ..."
+  return 0;
+} // annotate the return type! */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  // if its true the function will return a "number" but
+  // otherweise js will return "uindefined" so 
+  // thats missing in this function 
+} */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  // if its true the function will return a "number" but
+  // otherweise js will return "uindefined" so
+  // thats missing in this function
+} */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number) {
+  if (income < 50_000) return income * 1.2;
+  // but now the function is buggy!
+  // but the good news in ts confing file theres another
+  // to turn on to detecte it (noImplicitReturns)
+} */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  return income * 1.3;
+} */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear: number): number {
+  let x; // "noUnusedLocals" is on!
+  if (taxYear < 2023) return income * 1.2;
+  return income * 1.3;
+}
+calculateTax(10_000, 2023); */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear?: number): number {
+  if (taxYear < 2023) return income * 1.2;
+  // if dont suply the "taxYear" by default "undefined" will be used
+  // and we cant compare "undefined" with "2023"
+  // so we hv 2 options   1- old js trick  2- default value
+  return income * 1.3;
+}
+calculateTax(10_000); */
+
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear?: number): number {
+  if ((taxYear || 2023) < 2023) return income * 1.2;
+  // 1- old js trick
+  return income * 1.3;
+}
+calculateTax(10_000); */
+
+//////////////////////////////////////////////////////
+function calculateTax(income: number, taxYear = 2023): number {
+  if (taxYear < 2023) return income * 1.2;
+  // 2 - default value
+  return income * 1.3;
+}
+calculateTax(10_000);
+
+//////////////////////////////////////////////////////
+/////////////////////    Objects    ////////////////
+//////////////////////////////////////////////////////
