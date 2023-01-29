@@ -236,7 +236,7 @@ employee.name = "Mosh"; */ // but option to is a valid but it good avoid bc
 
 // ==>
 //// Dry principle (dont repeat yourselsf!) //////
-type Employee = {
+/* type Employee = {
   readonly id: number;
   name: string;
   retire: (date: Date) => void; // method!
@@ -249,8 +249,27 @@ let employee: Employee = {
   retire: (date: Date) => {
     console.log(date);
   },
-};
+}; */
 
 //////////////////////////////////////////////////////
 ////////////////  Union Types  ///////////////////////
+//////////////////////////////////////////////////////
+
+// woth "Union Types" we can give a variable or a function-
+// parameter more then one type.
+
+function kgToLbs(weight: number | string): number {
+  ///////////////////// "number | string" => "Union Types"!
+  // Narrowing //
+  if (typeof weight === "number") {
+    return weight * 2.2;
+  } else {
+    return parseInt(weight) * 2.2;
+  }
+}
+kgToLbs(10);
+kgToLbs("10kg");
+
+//////////////////////////////////////////////////////
+///////////////   Intersection Types   ///////////////
 //////////////////////////////////////////////////////

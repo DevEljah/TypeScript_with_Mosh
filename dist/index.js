@@ -6,6 +6,9 @@ if (age < 50) age += 10;
 console.log(age);
  */
 //////////////////////////////////////////////////////
+////////////  Section 2  FUNAMENTALS  ////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 /* let sales = 123_456_789; // <== let sales: number = 123_456_789;
 let course = "TypeScript"; // <== let course: string = "TypeScript";
@@ -51,10 +54,10 @@ level = "a"; // don't use is like this! */
 //////////////////////////////////////////////////////
 /////////////////////      Enums      ////////////////
 //////////////////////////////////////////////////////
-/* const small = 1;
-const medium = 2;
-const big = 3; ////// one way,
-// another way; */
+// const small = 1;
+// const medium = 2;
+// const big = 3; ////// one way,
+// // another way;
 /* //PascalCase!
 enum Size {
   Small = 0,
@@ -66,13 +69,174 @@ enum Size {
   Medium = "m",
   Large = "l",
 } */
-////
-var Size;
-(function (Size) {
-  Size[(Size["Small"] = 1)] = "Small";
-  Size[(Size["Medium"] = 2)] = "Medium";
-  Size[(Size["Large"] = 3)] = "Large";
-})(Size || (Size = {}));
-let mySize = Size.Medium;
-console.log(mySize);
+///////////////////////////////
+/* enum Size {
+  Small = 1,
+  Medium,
+  Large,
+}
+let mySize: Size = Size.Medium;
+console.log(mySize); */
+//// terminal ==> tsc ==> node dist/indexjs
+//// a trick! if "const" then the tsc compiled code be different ;
+/* const enum Size {
+  Small = 1,
+  Medium,
+  Large,
+}
+let mySize: Size = Size.Medium;
+console.log(mySize); */
+//////////////////////////////////////////////////////
+/////////////////////    Functions    ////////////////
+//////////////////////////////////////////////////////
+/* function calculateTax (income: number) {
+//////////////////////////////////////////////////////
+} */ // at this if mouse over to the function the type of return value is "void"
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number) {
+  return 0;
+} */ //now the function returns a type of value "number"(the type of return value)
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  // number or "void or ..."
+  return 0;
+} // annotate the return type! */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  // if its true the function will return a "number" but
+  // otherweise js will return "uindefined" so
+  // thats missing in this function
+} */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  // if its true the function will return a "number" but
+  // otherweise js will return "uindefined" so
+  // thats missing in this function
+} */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number) {
+  if (income < 50_000) return income * 1.2;
+  // but now the function is buggy!
+  // but the good news in ts confing file theres another
+  // to turn on to detecte it (noImplicitReturns)
+} */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number): number {
+  if (income < 50_000) return income * 1.2;
+  return income * 1.3;
+} */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear: number): number {
+  let x; // "noUnusedLocals" is on!
+  if (taxYear < 2023) return income * 1.2;
+  return income * 1.3;
+}
+calculateTax(10_000, 2023); */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear?: number): number {
+  if (taxYear < 2023) return income * 1.2;
+  // if dont suply the "taxYear" by default "undefined" will be used
+  // and we cant compare "undefined" with "2023"
+  // so we hv 2 options   1- old js trick  2- default value
+  return income * 1.3;
+}
+calculateTax(10_000); */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear?: number): number {
+  if ((taxYear || 2023) < 2023) return income * 1.2;
+  // 1- old js trick
+  return income * 1.3;
+}
+calculateTax(10_000); */
+//////////////////////////////////////////////////////
+/* function calculateTax(income: number, taxYear = 2023): number {
+  if (taxYear < 2023) return income * 1.2;
+  // 2 - default value
+  return income * 1.3;
+}
+calculateTax(10_000); */
+//////////////////////////////////////////////////////
+/////////////////////    Objects    //////////////////
+//////////////////////////////////////////////////////
+/* let employee = { id: 1 };
+employee.name = "Mosh"; // <== this is valid in js! */
+/* let employee: { // to solve this error theres 2 option!
+  id: number;
+  name: string;
+} = { id: 1 };
+employee.name = "Mosh";
+ */
+//// option 1 ////
+/* let employee: {
+  id: number;
+  name: string;
+} = { id: 1, name: "" };
+employee.name = "Mosh"; */
+//// option 2 ////
+/* let employee: {
+  id: number;
+  name?: string;
+} = { id: 1 };
+employee.name = "Mosh"; */ // but option to is a valid but it good avoid bc
+///////////////////////// every employee musst have a name!
+//==> ==>
+/* let employee: {
+  readonly id: number; // it is set to "readonly" bc you dont wanna change id!
+  name: string;
+} = { id: 1, name: "Dev" }; */
+// employee.id = 0; // this is an error bc "id" is set to "readonly"!
+///////// defining a function/method in this object //////////
+/* let employee: {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void; // method!
+} = {
+  id: 1,
+  name: "Dev",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+}; */
+// ==>
+//////////////////////////////////////////////////////
+////////////  Section 3  ADVANCED TYPES  /////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+////////////////  Type Aliases   /////////////////////
+//////////////////////////////////////////////////////
+// ==>
+//// Dry principle (dont repeat yourselsf!) //////
+/* type Employee = {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void; // method!
+};
+
+let employee: Employee = {
+  // annotated with new type "Employee"
+  id: 1,
+  name: "Dev",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+}; */
+//////////////////////////////////////////////////////
+////////////////  Union Types  ///////////////////////
+//////////////////////////////////////////////////////
+// woth "Union Types" we can give a variable or a function-
+// parameter more then one type.
+function kgToLbs(weight) {
+    ///////////////////// "number | string" => "Union Types"!
+    // Narrowing //
+    if (typeof weight === "number") {
+        return weight * 2.2;
+    }
+    else {
+        return parseInt(weight) * 2.2;
+    }
+}
+kgToLbs(10);
+kgToLbs("10kg");
 //# sourceMappingURL=index.js.map
