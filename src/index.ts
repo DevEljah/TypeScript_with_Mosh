@@ -258,7 +258,7 @@ let employee: Employee = {
 // woth "Union Types" we can give a variable or a function-
 // parameter more then one type.
 
-function kgToLbs(weight: number | string): number {
+/* function kgToLbs(weight: number | string): number {
   ///////////////////// "number | string" => "Union Types"!
   // Narrowing //
   if (typeof weight === "number") {
@@ -268,8 +268,29 @@ function kgToLbs(weight: number | string): number {
   }
 }
 kgToLbs(10);
-kgToLbs("10kg");
+kgToLbs("10kg"); */
 
 //////////////////////////////////////////////////////
 ///////////////   Intersection Types   ///////////////
+//////////////////////////////////////////////////////
+
+/* type Draggable = {
+  drag: () => void;
+};
+
+type Resizable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizable; // this is an "Intersection Types"!
+
+// to initialize this object need to implement
+// the all members of "Draggable" and "Resizable" objects.
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
+}; */
+
+//////////////////////////////////////////////////////
+///////////////     Literal Types      ///////////////
 //////////////////////////////////////////////////////
