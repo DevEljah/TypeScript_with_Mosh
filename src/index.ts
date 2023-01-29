@@ -6,6 +6,10 @@ console.log(age);
  */
 
 //////////////////////////////////////////////////////
+////////////  Section 2  FUNAMENTALS  ////////////////
+//////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 /* let sales = 123_456_789; // <== let sales: number = 123_456_789;
 let course = "TypeScript"; // <== let course: string = "TypeScript";
@@ -56,10 +60,10 @@ level = "a"; // don't use is like this! */
 /////////////////////      Enums      ////////////////
 //////////////////////////////////////////////////////
 
-/* const small = 1;
-const medium = 2;
-const big = 3; ////// one way,
-// another way; */
+// const small = 1;
+// const medium = 2;
+// const big = 3; ////// one way,
+// // another way;
 
 /* //PascalCase!
 enum Size {
@@ -72,7 +76,7 @@ enum Size {
   Medium = "m",
   Large = "l",
 } */
-////
+///////////////////////////////
 /* enum Size {
   Small = 1,
   Medium,
@@ -166,13 +170,65 @@ calculateTax(10_000); */
 calculateTax(10_000); */
 
 //////////////////////////////////////////////////////
-function calculateTax(income: number, taxYear = 2023): number {
+/* function calculateTax(income: number, taxYear = 2023): number {
   if (taxYear < 2023) return income * 1.2;
   // 2 - default value
   return income * 1.3;
 }
-calculateTax(10_000);
+calculateTax(10_000); */
 
 //////////////////////////////////////////////////////
-/////////////////////    Objects    ////////////////
+/////////////////////    Objects    //////////////////
+//////////////////////////////////////////////////////
+
+/* let employee = { id: 1 };
+employee.name = "Mosh"; // <== this is valid in js! */
+
+/* let employee: { // to solve this error theres 2 option!
+  id: number;
+  name: string;
+} = { id: 1 };
+employee.name = "Mosh";
+ */
+
+//// option 1 ////
+/* let employee: {
+  id: number;
+  name: string;
+} = { id: 1, name: "" };
+employee.name = "Mosh"; */
+
+//// option 2 ////
+/* let employee: {
+  id: number;
+  name?: string;
+} = { id: 1 };
+employee.name = "Mosh"; */ // but option to is a valid but it good avoid bc
+///////////////////////// every employee musst have a name!
+//==> ==>
+/* let employee: {
+  readonly id: number; // it is set to "readonly" bc you dont wanna change id!
+  name: string;
+} = { id: 1, name: "Dev" }; */
+// employee.id = 0; // this is an error bc "id" is set to "readonly"!
+
+///////// defining a function/method in this object //////////
+let employee: {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void; // method!
+} = {
+  id: 1,
+  name: "Dev",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+
+//////////////////////////////////////////////////////
+////////////  Section 3  ADVANCED TYPES  /////////////
+//////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+////////////////    Section 3    /////////////////////
 //////////////////////////////////////////////////////
