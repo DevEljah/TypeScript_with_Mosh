@@ -213,7 +213,7 @@ employee.name = "Mosh"; */ // but option to is a valid but it good avoid bc
 // employee.id = 0; // this is an error bc "id" is set to "readonly"!
 
 ///////// defining a function/method in this object //////////
-let employee: {
+/* let employee: {
   readonly id: number;
   name: string;
   retire: (date: Date) => void; // method!
@@ -223,7 +223,8 @@ let employee: {
   retire: (date: Date) => {
     console.log(date);
   },
-};
+}; */
+// ==>
 
 //////////////////////////////////////////////////////
 ////////////  Section 3  ADVANCED TYPES  /////////////
@@ -231,4 +232,25 @@ let employee: {
 
 //////////////////////////////////////////////////////
 ////////////////  Type Aliases   /////////////////////
+//////////////////////////////////////////////////////
+
+// ==>
+//// Dry principle (dont repeat yourselsf!) //////
+type Employee = {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void; // method!
+};
+
+let employee: Employee = {
+  // annotated with new type "Employee"
+  id: 1,
+  name: "Dev",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+
+//////////////////////////////////////////////////////
+////////////////  Union Types  ///////////////////////
 //////////////////////////////////////////////////////
