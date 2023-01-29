@@ -302,3 +302,77 @@ let textBox: UIWidget = {
 //////////////////////////////////////////////////////
 ///////////////    Nullable Types      ///////////////
 //////////////////////////////////////////////////////
+/* function greet(name: string) {
+  console.log(name.toUpperCase());
+}
+greet(null);   */
+// at this point this function total js valid code!
+// but running this app the app will gonna crush bc
+// we cont call this method "toUpperCase()" on a "null" or "undefined" object.
+// "null" or "undefined" are common source of problems!
+// thats whay TS compiler stops us from using it.
+
+// =>
+/* function greet(name: string | null) {
+  if (name) console.log(name.toUpperCase());
+  else console.log("hola");
+}
+greet(null); */
+// or =>
+/* function greet(name: string | null | undefined) {
+  if (name) console.log(name.toUpperCase());
+  else console.log("hola");
+}
+greet(undefined); */
+
+//////////////////////////////////////////////////////
+///////////////   Optional Chaining    ///////////////
+//////////////////////////////////////////////////////
+/* type Customer = {
+  birthday: Date;
+};
+
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+// if (customer !== null) // but ...
+//// Optional property access operator! => ("?") ////
+console.log(customer?.birthday);
+// excute this code => //// tsc && node dist/index.js //
+// the result is => "undefined" but if "getCustomer(1);" ... */
+
+//////////////////////////////////////////////////////
+/* type Customer = {
+  birthday?: Date; // <=
+};
+
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer?.birthday?.getFullYear()); //"getFullYear()" is a method */
+
+//////////////////////////////////////////////////////
+//// Optional element access operator! => ("?") ////
+
+////its useful when dealing with array.
+// if (customers !== null)
+// customer?.[0] // <=
+
+//////////////////////////////////////////////////////
+//// Optional call operator! => ("?") ////
+// let log: any = (msg: string) => console.log(msg);
+// or
+/* let log: any = null;
+log("a"); // if run this will crush bc "log" is "null" 
+// so  */
+/* let log: any = null;
+log?.("a"); */ // so this piece of code will get excuted only if "log"
+////////////// is referencing an actual "function" otherwise gets "undefined".
+
+//////////////////////////////////////////////////////
+///////////////                        ///////////////
+//////////////////////////////////////////////////////
